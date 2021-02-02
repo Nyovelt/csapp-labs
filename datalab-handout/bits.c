@@ -233,7 +233,8 @@ int isLessOrEqual(int x, int y)
   int sx = x >> 31 & 1;
   int sy = y >> 31 & 1;
   int ans = x + (~y+1);// ans = x - y
-  return 2;
+  int sans = ans >> 31 & 1;
+  return (sx & !sy ) | !(sx ^ sy) & !(sans) ;
 }
 //4
 /* 
@@ -246,7 +247,7 @@ int isLessOrEqual(int x, int y)
  */
 int logicalNeg(int x)
 {
-  return 2;
+  return ((~x ) >> 31 ^1)  &  (x >> 31  ^1);
 }
 /* howManyBits - return the minimum number of bits required to represent x in
  *             two's complement
